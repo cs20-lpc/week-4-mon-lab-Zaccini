@@ -9,17 +9,23 @@ LinkedList<T>::~LinkedList() {
 
 template <typename T>
 void LinkedList<T>::append(const T& elem) {
-    // TODO
+    //TODO
+    Node *position = head;
+    while (position->next != nullptr){
+        position = position->next;
+    }
+    position->next = elem;
 }
 
 template <typename T>
 void LinkedList<T>::clear() {
-    // TODO
+    head = nullptr;
 }
 
 template <typename T>
 T LinkedList<T>::getElement(int position) const {
     // TODO
+    
 }
 
 template <typename T>
@@ -35,6 +41,7 @@ bool LinkedList<T>::isEmpty() const {
 template <typename T>
 void LinkedList<T>::replace(int position, const T& elem) {
     // TODO
+    
 }
 
 template <typename T>
