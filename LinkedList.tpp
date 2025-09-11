@@ -9,22 +9,41 @@ LinkedList<T>::~LinkedList() {
 
 template <typename T>
 void LinkedList<T>::append(const T& elem) {
-    //TODO
-    Node *position = head;
-    while (position->next != nullptr){
-        position = position->next;
+    Node* n = new Node(elem);
+    if (!head){
+        head = n;
+        return;
+    } 
+    Node *curr = head;
+    while (curr->next != nullptr){
+        curr = curr->next;
     }
-    position->next = elem;
+    curr->next = n;
+    ++this->length;
 }
 
 template <typename T>
 void LinkedList<T>::clear() {
+    Node *curr = head;
+    while(curr != nullptr){
+        Node *nextNode = curr->next;
+        delete curr;
+        curr = nextNode;
+    }
     head = nullptr;
+    this->length = 0;
 }
 
 template <typename T>
 T LinkedList<T>::getElement(int position) const {
-    // TODO
+    if (position < 0 || head == nullptr) {
+        throw std::string("getElement: Position is out of bounds or list is empty.");
+    }
+    Node *curr = head;
+    for (int i = 0; i < position; i++){
+        curr = curr->next;
+    }
+    return curr-> value;
     
 }
 
@@ -40,8 +59,14 @@ bool LinkedList<T>::isEmpty() const {
 
 template <typename T>
 void LinkedList<T>::replace(int position, const T& elem) {
-    // TODO
-    
+    if(position < 0){
+        throw std::string("Replace: Position cannot be negative");
+    }
+    Node *curr = head;
+    for (int i = 0; i < position; i++){
+        curr = curr-> next;
+    }
+    curr->value = elem;
 }
 
 template <typename T>
