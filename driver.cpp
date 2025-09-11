@@ -11,7 +11,7 @@ int main() {
     cout<< "Current list: " << n << endl;
 
     n.replace(0, 9);
-    cout<<"List after replacing element 2 with the number 4: " << n << endl;
+    cout<<"List after replacing element 0 with the number 9: " << n << endl;
 
     cout << "Element 3: " << n.getElement(3) << endl;
 
